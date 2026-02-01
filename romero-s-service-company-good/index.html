@@ -38,7 +38,21 @@
   <link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-stone-50 text-stone-900 antialiased">
-    <div id="root"></div>
+   <!-- Netlify form detection (hidden) -->
+<form
+  name="request-service"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  hidden
+>
+  <input type="hidden" name="form-name" value="request-service" />
+  <input name="bot-field" />
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="tel" name="phone" />
+  <textarea name="message"></textarea>
+</form> <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
 </html>
