@@ -30,13 +30,30 @@ const RequestService: React.FC = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate submission
-    console.log('Form Submitted:', formData);
+  const encode = (data: Record<string, string>) =>
+  new URLSearchParams(data).toString();
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "request-service",
+        "bot-field": "",
+        ...formData,
+      }),
+    });
+
     setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch (error) {
+    console.error("Netlify form submit error:", error);
+    alert("Something went wrong. Please try again.");
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -93,7 +110,21 @@ const RequestService: React.FC = () => {
                 <p className="text-stone-500 font-medium">Please provide accurate contact information for scheduling.</p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form
+                name="request-service"
+                method="POST"
+                action="/"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                className="space-y-8"
+>
+                <input type="hidden" name="form-name" value="request-service" />
+                <p className="hidden">
+                  <label>
+                    Don’t fill this out: <input name="bot-field" onChange={() => {}} />
+                  </label>
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-bold text-emerald-950 uppercase tracking-widest px-1">Full Name</label>
