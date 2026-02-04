@@ -1,0 +1,36 @@
+# Netlify Configuration for Romero's Service Company
+# This file tells Netlify how to handle your React single-page application
+
+# Redirect all routes to index.html (required for BrowserRouter)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers for better SEO and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Cache static assets for better performance
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Force HTTPS (already enabled in Netlify UI, but good to have)
+[[redirects]]
+  from = "http://romerosservicecompany.com/*"
+  to = "https://romerosservicecompany.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.romerosservicecompany.com/*"
+  to = "https://romerosservicecompany.com/:splat"
+  status = 301
+  force = true
