@@ -8,10 +8,9 @@ import { Link } from 'react-router-dom';
 const Home: React.FC = () => {
   return (
     <div>
-      <Hero 
-        title="Multi-Trade Property Repairs in Lafayette and Acadiana"
-        subtitle="ACADIANA'S PREMIER MULTI-TRADE PARTNER"
-        description="Romero’s Service Company is a locally owned, multi-trade repair and maintenance company serving Lafayette and the Acadiana region. We handle residential and commercial repairs, installations, and ongoing property maintenance with one reliable crew."
+      title="Full-Service Residential & Commercial Property Solutions, All With One Call"
+subtitle="ONE TEAM. ONE CALL. REAL SOLUTIONS."
+description="Romero’s Service Company delivers repair, maintenance, cleaning, installation, and remodeling services for residential and commercial properties throughout Lafayette and surrounding Acadiana areas. From plumbing, electrical, and HVAC to carpentry, remodeling, and professional cleaning, our experienced full-service team makes it easy to handle nearly any property need with one reliable company."
         image="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=2069"
         alt="Professional Romero’s Service Company technician performing precision electrical repairs for a client in the Acadiana area."
         ctaText="Request Service"
@@ -48,13 +47,13 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-emerald-900 font-bold uppercase tracking-[0.3em] text-sm mb-4">Comprehensive Multi-Trade Repair Services</h2>
+              <h2 className="text-emerald-900 font-bold uppercase tracking-[0.3em] text-sm mb-4">Full-Service Property Solutions</h2>
               <h3 className="text-4xl md:text-5xl font-bold text-emerald-950 leading-tight">
-                Not a single-trade company. <br className="hidden md:block"/> A full-scope repair solution.
-              </h3>
+  One company. <br className="hidden md:block"/> Nearly every property service.
+</h3>
               <p className="text-lg text-stone-600 mt-6 leading-relaxed">
-                We handle plumbing, electrical, maintenance, installations, and repairs through one coordinated team across Lafayette and the surrounding parishes.
-              </p>
+  Repairs, maintenance, cleaning, installations, and remodeling, handled by one coordinated team for residential and commercial properties across Lafayette and surrounding Acadiana areas.
+</p>
             </div>
             <Link to="/services" className="inline-flex items-center text-emerald-900 font-bold hover:translate-x-2 transition-transform">
               View All Services <ArrowRight className="ml-2 w-5 h-5" />
