@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
-    <div>
+   <div>
+    <Hero
       title="Full-Service Residential & Commercial Property Solutions, All With One Call"
 subtitle="ONE TEAM. ONE CALL. REAL SOLUTIONS."
 description="Romero’s Service Company delivers repair, maintenance, cleaning, installation, and remodeling services for residential and commercial properties throughout Lafayette and surrounding Acadiana areas. From plumbing, electrical, and HVAC to carpentry, remodeling, and professional cleaning, our experienced full-service team makes it easy to handle nearly any property need with one reliable company."
