@@ -17,8 +17,14 @@ import {
 export const COMPANY_NAME = "Romero’s Service Company";
 export const PHONE = "(337) 962-7879";
 export const EMAIL = "support@romerosservicecompany.com";
-export const SERVICE_AREAS = ["Lafayette", "Acadiana", "Broussard", "Youngsville", "Scott", "Rayne", "Surrounding Acadiana areas”
-
+export const SERVICE_AREAS = [
+  "Lafayette",
+  "Acadiana",
+  "Broussard",
+  "Youngsville",
+  "Scott",
+  "Rayne",
+  "Surrounding Acadiana areas",
 ];
 
 
