@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero.tsx';
 import ServiceCard from '../components/ServiceCard.tsx';
-import { PRIMARY_SERVICES, CORE_VALUES, PHONE } from '../constants.tsx';
+import { PRIMARY_SERVICES, SECONDARY_SERVICES, CORE_VALUES, PHONE } from '../constants.tsx';
 import { CheckCircle2, ShieldCheck, Zap, Wrench, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -43,36 +43,84 @@ description="Romero’s Service Company delivers repair, maintenance, cleaning, 
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section id="services" className="py-24 px-6 bg-stone-50 scroll-mt-header">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div className="max-w-2xl">
-              <h2 className="text-emerald-900 font-bold uppercase tracking-[0.3em] text-sm mb-4">Full-Service Property Solutions</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-emerald-950 leading-tight">
-  One company. <br className="hidden md:block"/> Nearly every property service.
-</h3>
-              <p className="text-lg text-stone-600 mt-6 leading-relaxed">
-  Repairs, maintenance, cleaning, installations, and remodeling, handled by one coordinated team for residential and commercial properties across Lafayette and surrounding Acadiana areas.
-</p>
-            </div>
-            <Link to="/services" className="inline-flex items-center text-emerald-900 font-bold hover:translate-x-2 transition-transform">
-              View All Services <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </div>
+      {/* Services (Hybrid C) */}
+<section className="py-24 bg-stone-50">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold text-stone-900">
+          Full-Service Residential & Commercial Property Solutions
+        </h2>
+        <p className="mt-4 text-lg text-stone-700 max-w-2xl">
+          One team, one call. Repairs, maintenance, cleaning, installations, and remodeling handled by trusted local professionals across Lafayette and surrounding Acadiana areas.
+        </p>
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PRIMARY_SERVICES.map((service) => (
-              <ServiceCard 
-                key={service.id}
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-              />
-            ))}
-          </div>
+      <div className="flex gap-3">
+        <a
+          href="tel:3379627879"
+          className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-emerald-900 text-white font-semibold hover:bg-emerald-800 transition"
+        >
+          Call {PHONE}
+        </a>
+        <a
+          href="/request-service"
+          className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 font-semibold hover:bg-stone-100 transition"
+        >
+          Request Service
+        </a>
+      </div>
+    </div>
+
+    {/* Primary cards */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {PRIMARY_SERVICES.map((service) => (
+        <ServiceCard
+          key={service.id}
+          title={service.title}
+          description={service.description}
+          icon={service.icon}
+        />
+      ))}
+    </div>
+
+    {/* Secondary list: visible, not overwhelming */}
+    <div className="mt-14 rounded-2xl border border-stone-200 bg-white p-8">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+        <div className="max-w-2xl">
+          <h3 className="text-xl font-bold text-stone-900">
+            More services we handle
+          </h3>
+          <p className="mt-2 text-stone-700">
+            If you’re not sure where your project fits, call us. We’ll tell you straight if it’s in our scope.
+          </p>
         </div>
-      </section>
+
+        <div className="lg:text-right">
+          <Link
+  to="/services"
+  className="inline-flex items-center justify-center rounded-lg bg-emerald-900 px-6 py-3 text-white hover:bg-emerald-800"
+>
+  View all services
+</Link>
+        </div>
+      </div>
+
+      <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-3">
+        {SECONDARY_SERVICES.map((item) => (
+          <div key={item} className="flex items-start gap-3 text-stone-800">
+            <CheckCircle2 className="w-5 h-5 mt-0.5 text-emerald-900" />
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-6 text-sm text-stone-600">
+        And more, depending on the job. Specialty-licensed work is handled within applicable licensing and scope.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* About Section (Professional Standards) */}
       <section className="py-32 px-6 bg-white overflow-visible">
