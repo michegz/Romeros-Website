@@ -5,10 +5,10 @@ import Footer from './components/Footer.tsx';
 
 // SMART ROUTER: Automatically uses HashRouter in Google AI Studio, BrowserRouter on Netlify
 // This solves the problem of HashRouter working in development but BrowserRouter needed for SEO
-const Router = window.location.hostname === 'localhost' || 
-               window.location.hostname.includes('googleusercontent') ||
-               window.location.hostname.includes('google') 
-  ? HashRouter 
+const Router = window.location.hostname === 'localhost' ||
+  window.location.hostname.includes('googleusercontent') ||
+  window.location.hostname.includes('google')
+  ? HashRouter
   : BrowserRouter;
 
 // SEO Controller to update title and meta description based on current route
@@ -82,11 +82,11 @@ const ScrollToTop = () => {
             // Scroll to the anchor instantly since it's a new page
             element.scrollIntoView({ behavior: 'auto', block: 'start' });
           }
-        }, 200); 
+        }, 200);
         return () => clearTimeout(timer);
       }
       prevPathname.current = pathname;
-    } 
+    }
     // 3. Same route, but hash changed (Internal page anchor links)
     else if (hash) {
       const id = hash.replace('#', '');
@@ -115,7 +115,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow pt-24">
           <Suspense fallback={
             <div className="flex items-center justify-center min-h-screen bg-stone-50">
               <div className="w-12 h-12 border-4 border-emerald-900 border-t-transparent rounded-full animate-spin"></div>
