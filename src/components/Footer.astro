@@ -1,23 +1,33 @@
 ---
 const year = new Date().getFullYear();
 ---
-<footer class="bg-gray-900 text-gray-300">
+<footer class="bg-brand-deep text-accent-softest">
   <div class="max-w-6xl mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
 
       <!-- Brand column -->
       <div>
-        <p class="font-bold text-white text-lg mb-1">Romero's Service Company</p>
-        <p class="text-sm mb-3">Serving Lafayette and Acadiana</p>
+        <!-- Logo on dark background: white pill container for visibility -->
+        <div class="bg-white rounded-lg px-3 py-2 inline-block mb-4">
+          <img
+            src="/images/logo.svg"
+            alt="Romero's Service Company"
+            width="120"
+            height="40"
+            class="h-10 w-auto"
+            loading="lazy"
+          />
+        </div>
+        <p class="text-sm text-accent-pale mb-3">Serving Lafayette and Acadiana</p>
         <a
           href="tel:3373660592"
-          class="block font-bold text-accent hover:text-orange-400 transition-colors mb-1"
+          class="block font-bold text-accent hover:text-accent-light transition-colors mb-1"
         >
           (337) 366-0592
         </a>
         <a
           href="mailto:Romerosservicecompany@yahoo.com"
-          class="text-sm hover:text-white transition-colors"
+          class="text-sm text-accent-pale hover:text-white transition-colors"
         >
           Romerosservicecompany@yahoo.com
         </a>
@@ -25,44 +35,44 @@ const year = new Date().getFullYear();
 
       <!-- Nav column 1 -->
       <div>
-        <p class="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Services</p>
+        <p class="font-semibold text-accent-softest mb-3 text-sm uppercase tracking-wide">Services</p>
         <ul class="space-y-2 text-sm">
-          <li><a href="/services" class="hover:text-white transition-colors">All Services</a></li>
-          <li><a href="/services/plumbing" class="hover:text-white transition-colors">Plumbing</a></li>
-          <li><a href="/services/electrical" class="hover:text-white transition-colors">Electrical</a></li>
-          <li><a href="/services/hvac" class="hover:text-white transition-colors">HVAC</a></li>
-          <li><a href="/services/drywall" class="hover:text-white transition-colors">Drywall</a></li>
-          <li><a href="/services/painting" class="hover:text-white transition-colors">Painting</a></li>
-          <li><a href="/services/flooring" class="hover:text-white transition-colors">Flooring</a></li>
+          <li><a href="/services" class="text-accent-pale hover:text-white transition-colors">All Services</a></li>
+          <li><a href="/services/plumbing" class="text-accent-pale hover:text-white transition-colors">Plumbing</a></li>
+          <li><a href="/services/electrical" class="text-accent-pale hover:text-white transition-colors">Electrical</a></li>
+          <li><a href="/services/hvac" class="text-accent-pale hover:text-white transition-colors">HVAC</a></li>
+          <li><a href="/services/drywall" class="text-accent-pale hover:text-white transition-colors">Drywall</a></li>
+          <li><a href="/services/painting" class="text-accent-pale hover:text-white transition-colors">Painting</a></li>
+          <li><a href="/services/flooring" class="text-accent-pale hover:text-white transition-colors">Flooring</a></li>
         </ul>
       </div>
 
       <!-- Nav column 2 -->
       <div>
-        <p class="font-semibold text-white mb-3 text-sm uppercase tracking-wide">More Services</p>
+        <p class="font-semibold text-accent-softest mb-3 text-sm uppercase tracking-wide">More Services</p>
         <ul class="space-y-2 text-sm">
-          <li><a href="/services/handyman" class="hover:text-white transition-colors">Handyman</a></li>
-          <li><a href="/services/cleaning" class="hover:text-white transition-colors">Cleaning</a></li>
-          <li><a href="/emergency-repairs" class="hover:text-white transition-colors">Emergency Repairs</a></li>
-          <li><a href="/property-managers" class="hover:text-white transition-colors">Property Managers</a></li>
-          <li><a href="/service-areas" class="hover:text-white transition-colors">Service Areas</a></li>
-          <li><a href="/reviews" class="hover:text-white transition-colors">Reviews</a></li>
-          <li><a href="/faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="/services/handyman" class="text-accent-pale hover:text-white transition-colors">Handyman</a></li>
+          <li><a href="/services/cleaning" class="text-accent-pale hover:text-white transition-colors">Cleaning</a></li>
+          <li><a href="/emergency-repairs" class="text-accent-pale hover:text-white transition-colors">Emergency Repairs</a></li>
+          <li><a href="/property-managers" class="text-accent-pale hover:text-white transition-colors">Property Managers</a></li>
+          <li><a href="/service-areas" class="text-accent-pale hover:text-white transition-colors">Service Areas</a></li>
+          <li><a href="/reviews" class="text-accent-pale hover:text-white transition-colors">Reviews</a></li>
+          <li><a href="/faq" class="text-accent-pale hover:text-white transition-colors">FAQ</a></li>
         </ul>
       </div>
 
       <!-- Nav column 3 -->
       <div>
-        <p class="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Company</p>
+        <p class="font-semibold text-accent-softest mb-3 text-sm uppercase tracking-wide">Company</p>
         <ul class="space-y-2 text-sm">
-          <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
-          <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
-          <li><a href="/request-service" class="hover:text-white transition-colors">Request Service</a></li>
+          <li><a href="/about" class="text-accent-pale hover:text-white transition-colors">About</a></li>
+          <li><a href="/contact" class="text-accent-pale hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/request-service" class="text-accent-pale hover:text-white transition-colors">Request Service</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="border-t border-gray-700 pt-6 text-sm text-gray-500">
+    <div class="border-t border-brand pt-6 text-sm text-accent-pale/60">
       <p>&copy; {year} Romero's Service Company. All rights reserved. Licensed &amp; Insured.</p>
     </div>
   </div>

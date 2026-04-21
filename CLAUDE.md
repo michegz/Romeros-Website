@@ -25,7 +25,17 @@ A full website rebuild for Romero's Service Company, a multi-trade residential A
 - Caching: Configure via netlify.toml — static assets 1 year, HTML no-cache
 
 ## Brand Assets
-- Colors: Extract hex values from existing logo or site CSS before using — do not substitute without client approval. Reference only: #2C5F8A navy, #E8611A orange
+- Colors confirmed from live site audit — use these exact values:
+  - Primary green (buttons, nav, dark panels): #064e3b
+  - Darkest green (footer background): #022c22
+  - Medium green (section backgrounds): #065f46
+  - Page background: #fafaf9
+  - Body text: #1c1917
+  - Footer primary text: #ecfdf5
+  - Accent headings: #6ee7b7
+  - Card borders: #e7e5e4
+  - CTA button: #064e3b background, #ffffff text
+  - The navy #2C5F8A and orange #E8611A from earlier planning docs are WRONG — do not use them
 - Logo: Use existing logo as-is — no alterations, no new logo created
 
 ## Project Documents
