@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  ogType?: string;
+  preloadHero?: string;
+  schema?: string | string[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogType = 'website',
+  preloadHero,
+  schema,
+} = Astro.props;
+
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+---
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content={ogType} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+
+  <!-- Hero preload (above-fold image, page-specific) -->
+  {preloadHero && <link rel="preload" as="image" href={preloadHero} />}
+
+  <!-- Schema -->
+  {schemas.map((s) => (
+    <script type="application/ld+json" set:html={s} />
+  ))}
+
+  <!-- Favicon -->
+  <!-- PLACEHOLDER: Add favicon.ico and apple-touch-icon.png to /public when assets are available -->
+</head>

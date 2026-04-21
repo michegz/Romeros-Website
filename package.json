@@ -1,0 +1,20 @@
+{
+  "name": "romeros-website",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/sitemap": "^3.1.6"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.10",
+    "postcss": "^8.4.47",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.4"
+  }
+}

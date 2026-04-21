@@ -1,0 +1,550 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const localBusinessSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Romero's Service Company",
+  "description": "Multi-trade residential and commercial repair services in Lafayette and Acadiana — plumbing, electrical, HVAC, drywall, painting, flooring, cleaning, and more.",
+  "url": "https://romerosservicecompany.com",
+  "telephone": "(337) 366-0592",
+  "email": "Romerosservicecompany@yahoo.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lafayette",
+    "addressRegion": "LA",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    "Lafayette, LA",
+    "Youngsville, LA",
+    "Broussard, LA",
+    "Scott, LA",
+    "Carencro, LA",
+    "Breaux Bridge, LA",
+    "New Iberia, LA"
+  ],
+  "openingHours": "Mo-Su 00:00-23:59",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Residential & Commercial Repair Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plumbing Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electrical Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HVAC Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drywall Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Painting" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flooring Installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Handyman Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cleaning & Janitorial" } }
+    ]
+  },
+  "sameAs": [
+    "PLACEHOLDER_GBP_URL",
+    "PLACEHOLDER_NEXTDOOR_URL"
+  ]
+});
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What areas do you serve in Louisiana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We serve Lafayette and the surrounding Acadiana region, including Youngsville, Broussard, Scott, Carencro, Breaux Bridge, and New Iberia. Call us at (337) 366-0592 if you're not sure whether we cover your area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you licensed and insured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Romero's Service Company is fully licensed and insured, with both liability coverage and workers' compensation. We're happy to provide documentation on request."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you handle multiple repairs in one visit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely — that's exactly what we're built for. We're a multi-trade company, so one call can cover plumbing, electrical, drywall, painting, and more. No need to schedule four different contractors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can you respond?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We respond quickly — typically within 24 hours. For emergencies — burst pipes, no AC, electrical issues — we prioritize and move faster. Call us directly at (337) 366-0592 for urgent situations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work on commercial properties and rentals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We work with homeowners, property managers, landlords, and commercial property owners throughout Acadiana. We handle multi-unit repairs, make-ready turnovers, and ongoing property maintenance."
+      }
+    }
+  ]
+});
+
+const services = [
+  { name: "Plumbing", body: "Leaks, drains, fixtures, water heaters, emergency calls.", href: "/services/plumbing", phase2: false },
+  { name: "Electrical", body: "Outlets, fixtures, fans, panels, troubleshooting. Licensed.", href: "/services/electrical", phase2: false },
+  { name: "HVAC", body: "AC repair, heating, maintenance. South Louisiana heat — we respond fast.", href: "/services/hvac", phase2: false },
+  { name: "Drywall & Sheetrock", body: "Patching, water damage repair, texture matching, full replacement.", href: "/services/drywall", phase2: false },
+  { name: "Painting", body: "Interior and exterior — walls, trim, ceilings, commercial spaces.", href: "/services/painting", phase2: false },
+  { name: "Flooring", body: "Hardwood, LVP, tile, laminate — installation and repair.", href: "/services/flooring", phase2: false },
+  { name: "Cleaning & Janitorial", body: "Residential, commercial, move-out, property cleanup.", href: "/services/cleaning", phase2: false },
+  { name: "Handyman & Repairs", body: "Have a list? One call handles all of it. No job too small.", href: "/services/handyman", phase2: false },
+  { name: "Hauling & Junk Removal", body: "Debris, furniture, property cleanout — we haul it.", href: "/services/hauling", phase2: true },
+];
+
+const cities = [
+  { name: "Lafayette", href: "/lafayette" },
+  { name: "Youngsville", href: "/youngsville" },
+  { name: "Broussard", href: "/broussard" },
+  { name: "Scott", href: "/scott" },
+  { name: "Carencro", href: "/carencro" },
+  { name: "Breaux Bridge", href: "/breaux-bridge" },
+  { name: "New Iberia", href: "/new-iberia" },
+];
+
+const whyPoints = [
+  {
+    heading: "One Call Handles Everything",
+    body: "Plumbing. Electrical. HVAC. Drywall. Painting. Flooring. We do it all — so you're not coordinating four different contractors for one property."
+  },
+  {
+    heading: "Licensed, Insured, and Accountable",
+    body: "We are fully licensed and insured with liability and workers' compensation coverage. When we're on your property, you're protected."
+  },
+  {
+    heading: "Fast Response Across Acadiana",
+    body: "We respond quickly — typically within 24 hours. For emergencies, we move faster. Lafayette, Youngsville, Broussard, Scott, Carencro — we're local and we show up."
+  },
+  {
+    heading: "No Job Too Small",
+    body: "The jobs other contractors don't want are exactly what we're built for. A leaky faucet, a stuck door, a patched ceiling — call us."
+  },
+];
+
+const faqs = [
+  {
+    q: "What areas do you serve in Louisiana?",
+    a: "We serve Lafayette and the surrounding Acadiana region, including Youngsville, Broussard, Scott, Carencro, Breaux Bridge, and New Iberia. Call us at (337) 366-0592 if you're not sure whether we cover your area."
+  },
+  {
+    q: "Are you licensed and insured?",
+    a: "Yes. Romero's Service Company is fully licensed and insured, with both liability coverage and workers' compensation. We're happy to provide documentation on request."
+  },
+  {
+    q: "Can you handle multiple repairs in one visit?",
+    a: "Absolutely — that's exactly what we're built for. We're a multi-trade company, so one call can cover plumbing, electrical, drywall, painting, and more. No need to schedule four different contractors."
+  },
+  {
+    q: "How quickly can you respond?",
+    a: "We respond quickly — typically within 24 hours. For emergencies — burst pipes, no AC, electrical issues — we prioritize and move faster. Call us directly at (337) 366-0592 for urgent situations."
+  },
+  {
+    q: "Do you work on commercial properties and rentals?",
+    a: "Yes. We work with homeowners, property managers, landlords, and commercial property owners throughout Acadiana. We handle multi-unit repairs, make-ready turnovers, and ongoing property maintenance."
+  },
+];
+---
+
+<Layout
+  title="Residential & Commercial Repair Services in Lafayette, LA | Romero's Service Company"
+  description="Romero's Service Company provides multi-trade residential and commercial repair in Lafayette and Acadiana — plumbing, electrical, HVAC, drywall, painting, flooring, and more. Licensed & insured. Call (337) 366-0592."
+  canonical="https://romerosservicecompany.com/"
+  ogImage="/images/og-homepage.jpg"
+  schema={[localBusinessSchema, faqSchema]}
+>
+  <!-- ============================================================
+       S01 — HERO (ABOVE THE FOLD)
+       5 elements in exact vertical order. Nothing else above fold.
+       ============================================================ -->
+  <section
+    class="relative min-h-screen flex items-center justify-center bg-navy"
+    aria-label="Hero"
+  >
+    <!--
+      PLACEHOLDER: Hero background photo — real job photo or Adam/crew on site.
+      Min 1400px wide. WebP format. Max 200KB compressed.
+      When ready, add as an <img> with fetchpriority="high" and update the
+      preloadHero prop in this page's Layout call to match the image path.
+      Example markup:
+      <img
+        src="/images/hero.webp"
+        alt="Romero's Service Company crew — residential and commercial repair Lafayette LA"
+        class="absolute inset-0 w-full h-full object-cover"
+        fetchpriority="high"
+      />
+    -->
+    <div class="absolute inset-0 bg-navy/90"></div>
+
+    <div class="relative z-10 w-full max-w-3xl mx-auto px-6 py-24 flex flex-col items-center text-center text-white">
+      <!-- Element 1: H1 -->
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-5">
+        Residential &amp; Commercial Repair Services in Lafayette and Acadiana
+      </h1>
+
+      <!-- Element 2: Tagline — styled subtext, NOT an h2 -->
+      <p class="text-xl md:text-2xl font-semibold text-accent mb-8">One Call. Done.</p>
+
+      <!-- Element 3: Phone CTA -->
+      <a
+        href="tel:3373660592"
+        class="text-2xl md:text-3xl font-bold text-white hover:text-accent transition-colors mb-5"
+      >
+        Call (337) 366-0592
+      </a>
+
+      <!-- Element 4: Request Service button -->
+      <a
+        href="/request-service"
+        class="inline-block bg-accent text-white font-bold px-10 py-4 rounded-lg text-lg hover:bg-orange-700 transition-colors mb-8"
+      >
+        Request Service
+      </a>
+
+      <!-- Element 5: Trust bar — single horizontal row, no wrapping on desktop -->
+      <p class="text-sm text-gray-300 tracking-wide whitespace-nowrap">
+        Licensed &amp; Insured &nbsp;&middot;&nbsp; Available 24/7 &nbsp;&middot;&nbsp; Serving Acadiana
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S02 — SOCIAL PROOF STRIP
+       Visually subordinate to hero. Light background. No CTA.
+       ============================================================ -->
+  <section class="bg-gray-50 border-b border-gray-200 py-10" aria-label="Trust indicators">
+    <div class="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div>
+        <p class="font-semibold text-gray-800 text-sm">&#10003; Fully Licensed &amp; Insured</p>
+      </div>
+      <div>
+        <p class="text-xl font-bold text-navy mb-0.5">24/7</p>
+        <p class="text-xs text-gray-500">Available 24/7</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-800 text-sm">Acadiana's Multi-Trade Team</p>
+        <p class="text-xs text-gray-500 mt-0.5">Plumbing &middot; Electrical &middot; HVAC &middot; More</p>
+      </div>
+      <div>
+        <!--
+          PLACEHOLDER: Nextdoor Neighborhood Favorite badge image.
+          When ready, replace with:
+          <img src="/images/nextdoor-badge.webp" alt="Nextdoor Neighborhood Favorite — Youngsville"
+               class="h-10 w-auto mx-auto mb-1" loading="lazy" width="80" height="40" />
+        -->
+        <p class="font-semibold text-gray-800 text-sm">&#11088; Nextdoor Neighborhood Favorite</p>
+        <p class="text-xs text-gray-500 mt-0.5">Youngsville Neighborhood Favorite</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S03 — SERVICES GRID
+       9 cards. Each is an <a> tag. Hauling = Phase 2 pending.
+       ============================================================ -->
+  <section class="py-16 bg-white" aria-labelledby="services-heading">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 id="services-heading" class="text-2xl md:text-3xl font-bold text-center mb-4 text-gray-900">
+        Everything Your Property Needs — One Company
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        We handle the full list — plumbing, electrical, HVAC, drywall, painting, flooring, and more.
+        Residential and commercial. No job too small.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {services.map((svc) => (
+          <a
+            href={svc.href}
+            class="block border border-gray-200 rounded-lg p-6 hover:border-accent hover:shadow-md transition-all group"
+          >
+            {/* Phase 2 comment is in the HTML source for hauling card */}
+            {svc.phase2 && (
+              <><!-- page pending Phase 2 --></>
+            )}
+            <p class="font-bold text-lg mb-2 text-gray-900 group-hover:text-accent transition-colors">
+              {svc.name}
+            </p>
+            <p class="text-sm text-gray-600">{svc.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S04 — WHO WE SERVE
+       Two-column: Residential | Commercial. Text links, not buttons.
+       ============================================================ -->
+  <section class="py-16 bg-gray-50" aria-labelledby="who-we-serve-heading">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 id="who-we-serve-heading" class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+        We Work With Homeowners and Property Professionals
+      </h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Column 1: Residential -->
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-navy">Homeowners &amp; Renters</h3>
+          <p class="text-gray-600 mb-6">
+            Whether it's one repair or a full list — we handle it in a single visit. No need to track
+            down separate plumbers, electricians, or painters. We fix what needs fixing and get out of
+            your way.
+          </p>
+          <a href="/request-service" class="font-semibold text-accent hover:underline">
+            Request Service &rarr;
+          </a>
+        </div>
+
+        <!-- Column 2: Commercial -->
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-navy">Property Managers &amp; Commercial Clients</h3>
+          <p class="text-gray-600 mb-6">
+            We work with property managers, landlords, and commercial property owners throughout
+            Acadiana. Multi-unit repairs, make-ready turnovers, ongoing maintenance — one vendor,
+            multiple trades, reliable scheduling.
+          </p>
+          <a href="/property-managers" class="font-semibold text-accent hover:underline">
+            Property Manager Services &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S05 — WHY ROMERO'S
+       4 differentiators in 2×2 grid.
+       ============================================================ -->
+  <section class="py-16 bg-white" aria-labelledby="why-heading">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 id="why-heading" class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+        Why Acadiana Calls Romero's
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        {whyPoints.map((point) => (
+          <div class="p-6 border border-gray-100 rounded-lg">
+            <h3 class="font-bold text-lg mb-3 text-gray-900">{point.heading}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{point.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S06 — TESTIMONIALS
+       All 3 are PLACEHOLDER. Real verbatim quotes required before launch.
+       Do NOT remove this section — keep placeholders in DOM.
+       ============================================================ -->
+  <section class="py-16 bg-gray-50" aria-labelledby="testimonials-heading">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 id="testimonials-heading" class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+        What Our Customers Say
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!--
+          PLACEHOLDER: Testimonial 1 — Replace with real verbatim customer quote.
+          Required: exact customer words, customer name, city.
+          Format: — [Name], [City], LA
+          Source: Nextdoor reviews or direct customer feedback.
+        -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic mb-4 leading-relaxed">
+            "Adam showed up the same day I called. Fixed a leaky faucet and patched a hole in the
+            drywall — two things I had been putting off for months. Fast, honest, and priced fairly.
+            This is who you call in Lafayette."
+          </p>
+          <p class="text-sm font-semibold text-navy">— [Customer Name], Lafayette, LA</p>
+        </div>
+
+        <!--
+          PLACEHOLDER: Testimonial 2 — Must be from a property manager or commercial client.
+          Required: exact customer words, name, city.
+        -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic mb-4 leading-relaxed">
+            "We manage several properties in Acadiana and Romero's is our go-to for repairs. They
+            handle multiple trades, they're reliable, and they turn units fast. Haven't needed anyone
+            else since we started using them."
+          </p>
+          <p class="text-sm font-semibold text-navy">— [Customer Name], Property Manager, Lafayette, LA</p>
+        </div>
+
+        <!--
+          PLACEHOLDER: Testimonial 3 — Emergency/HVAC quote preferred.
+          Required: exact customer words, name, city.
+        -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic mb-4 leading-relaxed">
+            "AC went out on a Friday evening. Called Romero's and they were out within the day. In
+            South Louisiana summer, that's everything. I can't recommend them enough."
+          </p>
+          <p class="text-sm font-semibold text-navy">— [Customer Name], Youngsville, LA</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S07 — SERVICE AREA STRIP
+       7 city links. All must go to city page URLs.
+       ============================================================ -->
+  <section class="py-16 bg-white" aria-labelledby="areas-heading">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 id="areas-heading" class="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+        Serving Lafayette and All of Acadiana
+      </h2>
+      <p class="text-gray-600 mb-8">
+        We serve homeowners and property managers across the Acadiana region — including:
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        {cities.map((city) => (
+          <a
+            href={city.href}
+            class="bg-gray-100 hover:bg-navy hover:text-white text-gray-700 px-5 py-2 rounded-full text-sm font-medium transition-colors"
+          >
+            {city.name}
+          </a>
+        ))}
+      </div>
+      <p class="text-gray-600 mb-4">
+        Not sure if we cover your area? Call us at{' '}
+        <a href="tel:3373660592" class="font-semibold text-accent hover:underline">
+          (337) 366-0592
+        </a>{' '}
+        or check our full service area page.
+      </p>
+      <a href="/service-areas" class="font-semibold text-accent hover:underline">
+        View Full Service Area &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S08 — FEATURED PROJECT
+       Section stays in DOM with placeholders — do NOT remove.
+       Real photo + real project story required before launch.
+       ============================================================ -->
+  <section class="py-16 bg-gray-50" aria-labelledby="project-heading">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 id="project-heading" class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+        <!--
+          PLACEHOLDER: Replace [City Name] with the actual city of the featured job.
+        -->
+        Recent Work in Lafayette
+      </h2>
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+
+        <!-- Photo side -->
+        <div>
+          <!--
+            PLACEHOLDER: Real job photo required — before/after preferred, single photo acceptable.
+            WebP format. 50–150KB compressed.
+            Add loading="lazy" since this is below the fold.
+            Example:
+            <img
+              src="/images/proof/featured-job.webp"
+              alt="[Job type] in [City], LA"
+              class="rounded-lg w-full h-auto"
+              loading="lazy"
+              width="600"
+              height="450"
+            />
+            Caption below: [Job type], [City], [Year or 'recent']
+          -->
+          <div class="bg-gray-200 rounded-lg aspect-video flex items-center justify-center text-gray-400 text-sm">
+            PHOTO PLACEHOLDER — Real job photo needed
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div>
+          <!--
+            PLACEHOLDER: Replace with real project heading and story from Adam.
+            Heading format: [Job Type] in [City], LA
+            Body: 2–3 sentences — what the problem was, what was fixed, how long it took.
+          -->
+          <h3 class="text-xl font-bold mb-4 text-gray-900">
+            [Job Type] in [City], LA
+          </h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            [2–3 sentences describing the job: what the problem was, what we fixed, and how long it
+            took. Example: A homeowner in Youngsville called us after a pipe burst in their bathroom.
+            We repaired the pipe, patched the drywall, and had everything dried and painted within two
+            days.]
+          </p>
+          <a
+            href="/request-service"
+            class="inline-block bg-accent text-white font-bold px-7 py-3 rounded-lg hover:bg-orange-700 transition-colors"
+          >
+            See What We Can Do For You
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S09 — FAQ (ANSWER ENGINE SECTION)
+       5 questions — visible on page AND in FAQPage schema in <head>.
+       ============================================================ -->
+  <section class="py-16 bg-white" aria-labelledby="faq-heading">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 id="faq-heading" class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-8">
+        {faqs.map((item) => (
+          <div>
+            <h3 class="font-bold text-gray-900 mb-2">{item.q}</h3>
+            <p class="text-gray-600 leading-relaxed">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       S10 — FINAL CTA (DARK BOOKEND)
+       Mirrors hero dark background. One dominant CTA + secondary link.
+       ============================================================ -->
+  <section class="py-20 bg-navy text-white text-center" aria-label="Final call to action">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get It Fixed?</h2>
+      <p class="text-lg text-gray-300 mb-10 leading-relaxed">
+        One call is all it takes. We handle plumbing, electrical, HVAC, drywall, painting, flooring,
+        and more — across Lafayette and all of Acadiana. Licensed and insured. Fast response —
+        typically within 24 hours.
+      </p>
+      <a
+        href="/request-service"
+        class="inline-block bg-accent text-white font-bold px-10 py-4 rounded-lg text-lg hover:bg-orange-700 transition-colors mb-5"
+      >
+        Request Service
+      </a>
+      <br />
+      <a
+        href="tel:3373660592"
+        class="text-white hover:text-gray-300 transition-colors text-lg font-medium"
+      >
+        Or call us: (337) 366-0592
+      </a>
+      <p class="text-sm text-gray-400 mt-6 tracking-wide">
+        Licensed &amp; Insured &nbsp;&middot;&nbsp; Fast Response &nbsp;&middot;&nbsp; Serving Acadiana
+      </p>
+    </div>
+  </section>
+</Layout>
